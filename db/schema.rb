@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_26_160619) do
+ActiveRecord::Schema.define(version: 2019_06_27_151945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,23 +18,19 @@ ActiveRecord::Schema.define(version: 2019_06_26_160619) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "subcategory_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "cooking_methods", force: :cascade do |t|
     t.bigint "ingredient_id"
-    t.string "cooking_method"
+    t.string "method"
     t.float "measure_from"
     t.float "measure_to"
     t.string "size_metric"
-    t.integer "cookiing_temperature"
+    t.integer "cooking_temperature"
     t.float "timing_from"
     t.float "timing_to"
     t.string "timing_metric"
     t.string "timing_per"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_cooking_methods_on_ingredient_id"
   end
 
@@ -44,8 +40,6 @@ ActiveRecord::Schema.define(version: 2019_06_26_160619) do
     t.integer "safe_mininum_temperature"
     t.integer "rest_time"
     t.string "rest_time_metric"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_cooking_tips_on_ingredient_id"
   end
 
@@ -85,10 +79,8 @@ ActiveRecord::Schema.define(version: 2019_06_26_160619) do
     t.string "freeze_tips"
     t.integer "dop_freeze_min"
     t.integer "dop_freeze_max"
-    t.string "dop_freezer_metric"
-    t.string "dop_freezer_tips"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "dop_freeze_metric"
+    t.string "dop_freeze_tips"
     t.index ["category_id"], name: "index_ingredients_on_category_id"
   end
 
